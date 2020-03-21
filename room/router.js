@@ -39,17 +39,14 @@ router.get("/rooms", auth, async (request, response, next) => {
     const deviceNameArr = productIdArr.map(async item => {
       const prodItem = await Product.findByPk(item.productID);
       item.deviceName = prodItem.device_name;
-      console.log("--the newItem NOW -----------", item);
       return item;
     });
 
     Promise.all(deviceNameArr).then(async () => {
-      console.log("deviceNameArr--------------------", deviceNameArr);
       let newFetchRoomItem = {
         roomsList: [...fetchedRooms],
         expiringProductId: productIdArr
       };
-      console.log("---the rooms fetched ------", newFetchRoomItem);
       response.send(newFetchRoomItem);
     });
   } catch {
