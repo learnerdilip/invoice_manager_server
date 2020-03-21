@@ -18,7 +18,7 @@ router.post("/room", auth, async (request, response, next) => {
   }
 });
 
-router.get("/rooms", auth, async (request, response, next) => {
+router.get("/rooms", async (request, response, next) => {
   try {
     const fetchedRooms = await Room.findAll({
       where: { userId: request.user.id }
