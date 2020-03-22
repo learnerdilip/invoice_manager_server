@@ -44,6 +44,7 @@ router.post("/login", async (request, response) => {
     const userNew = {
       id: user.id,
       email: user.email,
+      name: user.name,
       token: toJWT({ id: user.id })
     };
     return response.send(userNew);
