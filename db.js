@@ -6,7 +6,7 @@ const databaseUrl =
 
 const db = new Sequelize(databaseUrl);
 
-db.sync({ force: true }).then(() =>
+db.sync().then(() =>
   console.log(`the INVOICE MANAGER DATABASE is now connected`)
 );
 
